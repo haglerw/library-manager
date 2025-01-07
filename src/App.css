@@ -1,0 +1,51 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.book-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.book-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.book-form input {
+  padding: 8px;
+}
+
+.book-form button {
+  padding: 8px;
+}
+
+header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+}
