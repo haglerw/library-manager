@@ -1,8 +1,10 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addBookToFirestore } from "../redux/bookSlice.js";
 
-function BookForm({ onAddBook }) {
+function BookForm() {
   const [newBook, setNewBook] = useState({ title: "", author: "", genre: "" });
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,7 +13,7 @@ function BookForm({ onAddBook }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddBook(newBook);
+    dispatch(addBookToFirestore(newBook));
     setNewBook({ title: "", author: "", genre: "" });
   };
 
@@ -42,9 +44,5 @@ function BookForm({ onAddBook }) {
     </form>
   );
 }
-
-BookForm.propTypes = {
-  onAddBook: PropTypes.func.isRequired,
-};
 
 export default BookForm;
