@@ -1,36 +1,24 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import BookForm from "./components/BookForm.jsx";
 import BookList from "./components/BookList.jsx";
+import { useDispatch } from "react-redux";
+import { fetchBooks } from "./redux/bookSlice.js";
 
 function App() {
-  const [books, setBooks] = useState([
-    { id: 1, title: "Siku Njema", author: "Ken Walibora", genre: "Africa" },
-    {
-      id: 2,
-      title: "Kifo Kisimani",
-      author: "Kithaka Wa Mberia",
-      genre: "Africa",
-    },
-  ]);
+  const dispatch = useDispatch();
 
-  const addBook = (book) => {
-    setBooks([...books, { ...book, id: books.length + 1 }]);
-  };
-
-  const updateBook = (updatedBook) => {
-    setBooks(
-      books.map((book) => (book.id === updatedBook.id ? updatedBook : book)),
-    );
-  };
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   return (
     <>
       <div>
         <Header />
-        <BookForm onAddBook={addBook} />
-        <BookList books={books} onUpdateBook={updateBook} />
+        <BookForm />
+        <BookList />
       </div>
     </>
   );
